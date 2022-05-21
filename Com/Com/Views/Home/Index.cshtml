@@ -1,0 +1,51 @@
+﻿@model Com.Models.Script
+
+
+
+<h2>Enter your source code or insert template or sample</h2>
+
+
+@using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+<div>
+    @if (ViewBag.xc != null)
+    {
+        foreach (var item in ViewBag.xc)
+        {
+            <h1>@item</h1>
+        }
+    }
+    <hr />
+    @Html.ValidationSummary(true, "")
+    <div>
+        @Html.LabelFor(model => model.MyText)
+        <div>
+            @Html.TextAreaFor(model => model.MyText, 30, 40, htmlAttributes: new { style = "width: 100%; max-width: 100%;" })
+
+            @Html.ValidationMessageFor(model => model.MyText, "", new { })
+        </div>
+    </div>
+
+    <div>
+        <div>
+            <div class="col-md-10">
+                <input type="file" name="FilePost" class="btn-dlt" />
+            </div>
+            <input type="submit" value="Scan" />
+
+            <input type="reset" value="Clear" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
