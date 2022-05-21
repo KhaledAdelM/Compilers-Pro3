@@ -1,0 +1,4 @@
+@ Type Person { 
+Rational G ( ) { 
+int *** frt = 5 ; 
+ahmed,mohamed 
